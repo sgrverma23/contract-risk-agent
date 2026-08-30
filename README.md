@@ -6,6 +6,8 @@
 
 **Why this matters:** Every startup signs contracts. A single uncapped liability clause or a missing DPA can be a material legal exposure. This agent gives the non-lawyer a structured, evidence-grounded first pass in under two minutes — with a qualified human making every final call.
 
+**Demo video:** [Watch on YouTube/Loom](https://drive.google.com/file/d/1QQ3df2ahDh4zvVxg3DO0xShoPfrhU4tW/view?usp=drive_link) ← replace with your link
+
 ---
 
 ## Agent Architecture
