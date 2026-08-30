@@ -1,0 +1,9 @@
+{
+  "contract_type": "nda",
+  "seeded_flags": [
+    "perpetual_term",
+    "unfavorable_jurisdiction",
+    "uncapped_damages"
+  ],
+  "expected_missing": []
+}

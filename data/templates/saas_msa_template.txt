@@ -1,0 +1,28 @@
+SAAS MASTER SERVICES AGREEMENT — STANDARD TEMPLATE
+
+1. SERVICES AND LICENSE
+Vendor grants Customer a limited, non-exclusive, non-transferable license to access and use the Services during the Subscription Term solely for Customer's internal business purposes.
+
+2. SERVICE LEVEL AGREEMENT (SLA)
+Vendor shall use commercially reasonable efforts to ensure 99.5% monthly uptime. In the event of downtime exceeding this threshold, Customer shall receive service credits equal to 10% of monthly fees for each additional 1% of downtime, up to a maximum of 30% of monthly fees.
+
+3. DATA PROCESSING AGREEMENT (DPA)
+Vendor shall process Customer Data only as a data processor acting on Customer's documented instructions. Vendor shall implement appropriate technical and organizational measures to protect Customer Data, notify Customer of any data breach within 72 hours, and delete or return all Customer Data within 30 days of termination.
+
+4. INTELLECTUAL PROPERTY
+Customer retains all right, title, and interest in Customer Data. Vendor retains all right, title, and interest in the Services, including all improvements and derivatives. Nothing in this Agreement transfers ownership of either party's IP.
+
+5. LIMITATION OF LIABILITY
+IN NO EVENT SHALL EITHER PARTY'S LIABILITY EXCEED THE FEES PAID BY CUSTOMER IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM. NEITHER PARTY SHALL BE LIABLE FOR INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES.
+
+6. INDEMNIFICATION
+Each party shall indemnify and defend the other against third-party claims arising from: (a) its breach of this Agreement; (b) its gross negligence or willful misconduct; (c) for Vendor: IP infringement claims related to the Services.
+
+7. TERM AND TERMINATION
+The initial Subscription Term is twelve (12) months. This Agreement automatically renews for successive twelve-month terms unless either party provides written notice of non-renewal at least sixty (60) days prior to the end of the then-current term. Either party may terminate this Agreement for convenience upon thirty (30) days written notice.
+
+8. AMENDMENTS
+This Agreement may only be amended by a written instrument signed by authorized representatives of both parties.
+
+9. GOVERNING LAW
+This Agreement is governed by the laws of the State of Delaware. Disputes shall be resolved by binding arbitration in Delaware.

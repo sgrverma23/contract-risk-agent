@@ -1,0 +1,533 @@
+<title>Contract Risk Analyst</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d2e;
+    --surface2: #232740;
+    --border: #2e3250;
+    --accent: #6c63ff;
+    --accent-light: #8b85ff;
+    --reject: #ff4d6d;
+    --caution: #ffa94d;
+    --safe: #51cf66;
+    --text: #e2e8f0;
+    --text-muted: #7c87a0;
+    --text-dim: #4a5568;
+    --radius: 10px;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f0f2f8;
+      --surface: #ffffff;
+      --surface2: #f7f8fc;
+      --border: #dde1f0;
+      --text: #1a1d2e;
+      --text-muted: #4a5568;
+      --text-dim: #a0aec0;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #f0f2f8; --surface: #ffffff; --surface2: #f7f8fc;
+    --border: #dde1f0; --text: #1a1d2e; --text-muted: #4a5568; --text-dim: #a0aec0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; min-height: 100vh; }
+
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .logo { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
+  .logo span { color: var(--accent); }
+  .tagline { font-size: 13px; color: var(--text-muted); margin-left: 4px; }
+
+  .steps {
+    display: flex;
+    gap: 0;
+    padding: 0 32px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+  .step {
+    padding: 12px 24px;
+    font-size: 13px;
+    color: var(--text-muted);
+    border-bottom: 2px solid transparent;
+    cursor: default;
+    white-space: nowrap;
+  }
+  .step.active { color: var(--accent-light); border-bottom-color: var(--accent); font-weight: 600; }
+  .step.done { color: var(--safe); }
+
+  main { max-width: 860px; margin: 0 auto; padding: 40px 24px; }
+
+  .panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; margin-bottom: 24px; }
+  .panel-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+  .panel-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; }
+
+  label { display: block; font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; letter-spacing: 0.5px; text-transform: uppercase; }
+
+  select, textarea {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    padding: 12px 14px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    font-family: inherit;
+  }
+  select:focus, textarea:focus { border-color: var(--accent); }
+  textarea { resize: vertical; min-height: 260px; line-height: 1.6; }
+
+  .form-row { margin-bottom: 20px; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.15s;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-light); }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent-light); }
+
+  .spinner {
+    display: inline-block;
+    width: 16px; height: 16px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .flag-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 14px;
+    background: var(--surface2);
+    transition: border-color 0.2s;
+  }
+  .flag-card.approved { border-color: var(--safe); background: rgba(81,207,102,0.05); }
+  .flag-card.dismissed { border-color: var(--text-dim); opacity: 0.5; }
+
+  .flag-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .badge {
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .badge-reject { background: rgba(255,77,109,0.15); color: var(--reject); }
+  .badge-caution { background: rgba(255,169,77,0.15); color: var(--caution); }
+  .clause-type { font-size: 14px; font-weight: 600; }
+  .flag-reason { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; line-height: 1.5; }
+  .flag-text {
+    font-size: 12px;
+    color: var(--text-dim);
+    background: var(--bg);
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    line-height: 1.5;
+    max-height: 80px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  .flag-rec { font-size: 13px; color: var(--accent-light); margin-bottom: 14px; }
+  .flag-rec::before { content: '→ '; }
+  .flag-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .flag-actions input[type="text"] {
+    flex: 1;
+    min-width: 200px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    padding: 8px 12px;
+    font-size: 13px;
+    outline: none;
+  }
+  .btn-approve { background: rgba(81,207,102,0.15); color: var(--safe); border: 1px solid rgba(81,207,102,0.3); padding: 7px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; }
+  .btn-approve:hover { background: rgba(81,207,102,0.25); }
+  .btn-approve.active { background: var(--safe); color: #fff; }
+  .btn-dismiss { background: rgba(124,135,160,0.1); color: var(--text-muted); border: 1px solid var(--border); padding: 7px 16px; border-radius: 6px; font-size: 13px; cursor: pointer; }
+  .btn-dismiss:hover { background: rgba(124,135,160,0.2); }
+  .btn-dismiss.active { background: var(--text-dim); color: #fff; }
+
+  .missing-section { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border); }
+  .missing-title { font-size: 14px; font-weight: 700; margin-bottom: 12px; color: var(--caution); }
+  .missing-list { list-style: none; }
+  .missing-list li { font-size: 13px; padding: 8px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; color: var(--text-muted); }
+  .missing-list li::before { content: '○'; color: var(--caution); }
+
+  .summary-bar {
+    display: flex;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--surface2);
+    border-radius: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .stat { text-align: center; flex: 1; min-width: 80px; }
+  .stat-num { font-size: 24px; font-weight: 800; }
+  .stat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  .stat-reject .stat-num { color: var(--reject); }
+  .stat-caution .stat-num { color: var(--caution); }
+  .stat-missing .stat-num { color: var(--caution); }
+
+  .report-body {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text);
+  }
+  .report-body h1 { font-size: 20px; margin: 24px 0 8px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+  .report-body h2 { font-size: 16px; margin: 20px 0 8px; color: var(--accent-light); }
+  .report-body h3 { font-size: 14px; margin: 16px 0 6px; }
+  .report-body ul, .report-body ol { padding-left: 20px; margin: 8px 0; }
+  .report-body li { margin-bottom: 6px; }
+  .report-body p { margin-bottom: 12px; }
+  .report-body strong { font-weight: 700; }
+  .report-body code { background: var(--surface2); padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+  .report-body blockquote { border-left: 3px solid var(--accent); padding-left: 14px; color: var(--text-muted); margin: 12px 0; }
+
+  .risk-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  .risk-HIGH { background: rgba(255,77,109,0.1); border: 1px solid rgba(255,77,109,0.3); color: var(--reject); }
+  .risk-MEDIUM { background: rgba(255,169,77,0.1); border: 1px solid rgba(255,169,77,0.3); color: var(--caution); }
+  .risk-LOW { background: rgba(81,207,102,0.1); border: 1px solid rgba(81,207,102,0.3); color: var(--safe); }
+
+  .copy-btn {
+    float: right;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .copy-btn:hover { border-color: var(--accent); color: var(--accent-light); }
+
+  .error-box {
+    background: rgba(255,77,109,0.08);
+    border: 1px solid rgba(255,77,109,0.3);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--reject);
+    margin-top: 16px;
+  }
+
+  #step-upload, #step-review, #step-report { display: none; }
+  #step-upload.active, #step-review.active, #step-report.active { display: block; }
+</style>
+
+<header>
+  <div class="logo">Contract<span>Risk</span></div>
+  <div class="tagline">AI-powered contract review with human oversight</div>
+</header>
+
+<nav class="steps">
+  <div class="step active" id="nav-1">1. Upload Contract</div>
+  <div class="step" id="nav-2">2. Review Flags</div>
+  <div class="step" id="nav-3">3. Risk Report</div>
+</nav>
+
+<main>
+  <!-- STEP 1: Upload -->
+  <div id="step-upload" class="active">
+    <div class="panel">
+      <div class="panel-title">Analyze a Contract</div>
+      <div class="panel-sub">Paste your contract text below. The agent will extract clauses, score risk, compare against standard templates, and surface issues for your review.</div>
+
+      <div class="form-row">
+        <label>Contract Type</label>
+        <select id="contract-type">
+          <option value="nda">Non-Disclosure Agreement (NDA)</option>
+          <option value="saas_msa">SaaS Master Services Agreement (MSA)</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label>Contract Text</label>
+        <textarea id="contract-text" placeholder="Paste the full contract text here…"></textarea>
+      </div>
+
+      <div id="upload-error" class="error-box" style="display:none"></div>
+
+      <button class="btn btn-primary" id="analyze-btn" onclick="startReview()">
+        <span>Analyze Contract</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- STEP 2: Human Review -->
+  <div id="step-review">
+    <div class="panel">
+      <div class="panel-title">Review Flagged Issues</div>
+      <div class="panel-sub">The agent found these issues. Approve the ones you want included in the final report. Dismiss any false positives. Add notes where helpful.</div>
+
+      <div class="summary-bar" id="summary-bar"></div>
+
+      <div id="flags-container"></div>
+
+      <div class="missing-section" id="missing-section" style="display:none">
+        <div class="missing-title">Missing Required Clauses</div>
+        <ul class="missing-list" id="missing-list"></ul>
+      </div>
+
+      <div style="margin-top:28px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+        <button class="btn btn-primary" id="generate-btn" onclick="submitReview()">
+          <span>Generate Risk Report</span>
+        </button>
+        <button class="btn btn-outline" onclick="selectAll(true)">Approve All</button>
+        <button class="btn btn-outline" onclick="selectAll(false)">Dismiss All</button>
+        <span id="review-status" style="font-size:13px;color:var(--text-muted)"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3: Report -->
+  <div id="step-report">
+    <div class="panel">
+      <div class="panel-title">
+        Risk Assessment Report
+        <button class="copy-btn" onclick="copyReport()">Copy Markdown</button>
+      </div>
+      <div id="risk-banner"></div>
+      <div class="report-body" id="report-body"></div>
+      <div style="margin-top:28px; display:flex; gap:12px;">
+        <button class="btn btn-outline" onclick="newReview()">New Review</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+let sessionId = null;
+let flagsData = [];
+let flagDecisions = {};
+let rawMarkdown = '';
+
+function setStep(n) {
+  document.querySelectorAll('[id^="step-"]').forEach(el => el.classList.remove('active'));
+  document.getElementById(`step-${['upload','review','report'][n-1]}`).classList.add('active');
+  document.querySelectorAll('.step').forEach((el, i) => {
+    el.classList.toggle('active', i + 1 === n);
+    if (i + 1 < n) el.classList.add('done');
+  });
+}
+
+async function startReview() {
+  const text = document.getElementById('contract-text').value.trim();
+  const type = document.getElementById('contract-type').value;
+  const errBox = document.getElementById('upload-error');
+
+  if (!text) { errBox.textContent = 'Please paste contract text.'; errBox.style.display='block'; return; }
+  errBox.style.display = 'none';
+
+  const btn = document.getElementById('analyze-btn');
+  btn.innerHTML = '<span class="spinner"></span><span>Analyzing…</span>';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('/api/review', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({contract_text: text, contract_type: type})
+    });
+    if (!res.ok) { const e = await res.json(); throw new Error(e.detail || 'Server error'); }
+    const data = await res.json();
+    sessionId = data.session_id;
+    renderReviewStep(data);
+    setStep(2);
+  } catch (e) {
+    errBox.textContent = e.message;
+    errBox.style.display = 'block';
+  } finally {
+    btn.innerHTML = '<span>Analyze Contract</span>';
+    btn.disabled = false;
+  }
+}
+
+function renderReviewStep(data) {
+  flagsData = data.flagged_clauses || [];
+  const missing = data.missing_clauses || [];
+  flagDecisions = {};
+
+  const rejectCount = flagsData.filter(f => f.risk_level === 'reject').length;
+  const cautionCount = flagsData.filter(f => f.risk_level === 'caution').length;
+
+  document.getElementById('summary-bar').innerHTML = `
+    <div class="stat stat-reject"><div class="stat-num">${rejectCount}</div><div class="stat-label">Reject</div></div>
+    <div class="stat stat-caution"><div class="stat-num">${cautionCount}</div><div class="stat-label">Caution</div></div>
+    <div class="stat stat-missing"><div class="stat-num">${missing.length}</div><div class="stat-label">Missing</div></div>
+    <div class="stat"><div class="stat-num">${flagsData.length}</div><div class="stat-label">Total Flags</div></div>
+  `;
+
+  const container = document.getElementById('flags-container');
+  if (flagsData.length === 0) {
+    container.innerHTML = '<p style="color:var(--safe);font-size:14px;">No risk flags found. This contract appears clean.</p>';
+  } else {
+    container.innerHTML = flagsData.map((f, i) => `
+      <div class="flag-card" id="flag-card-${i}">
+        <div class="flag-header">
+          <span class="badge badge-${f.risk_level}">${f.risk_level}</span>
+          <span class="clause-type">${f.clause_type.replace(/_/g, ' ')}</span>
+        </div>
+        <div class="flag-reason">${escHtml(f.reason)}</div>
+        <div class="flag-text">${escHtml(f.clause_text)}</div>
+        <div class="flag-rec">${escHtml(f.recommendation)}</div>
+        <div class="flag-actions">
+          <button class="btn-approve" id="approve-${i}" onclick="setDecision(${i},'approve')">✓ Approve Flag</button>
+          <button class="btn-dismiss" id="dismiss-${i}" onclick="setDecision(${i},'dismiss')">✗ Dismiss</button>
+          <input type="text" id="note-${i}" placeholder="Add reviewer note…" style="flex:1;min-width:180px;background:var(--surface);border:1px solid var(--border);border-radius:6px;color:var(--text);padding:8px 12px;font-size:13px;outline:none;">
+        </div>
+      </div>
+    `).join('');
+  }
+
+  const missingSection = document.getElementById('missing-section');
+  if (missing.length > 0) {
+    missingSection.style.display = 'block';
+    document.getElementById('missing-list').innerHTML = missing
+      .map(m => `<li>${m.replace(/_/g,' ')}</li>`).join('');
+  } else {
+    missingSection.style.display = 'none';
+  }
+}
+
+function setDecision(i, decision) {
+  flagDecisions[i] = decision;
+  const card = document.getElementById(`flag-card-${i}`);
+  const appBtn = document.getElementById(`approve-${i}`);
+  const disBtn = document.getElementById(`dismiss-${i}`);
+
+  card.className = 'flag-card ' + (decision === 'approve' ? 'approved' : 'dismissed');
+  appBtn.classList.toggle('active', decision === 'approve');
+  disBtn.classList.toggle('active', decision === 'dismiss');
+
+  const approved = Object.values(flagDecisions).filter(d => d === 'approve').length;
+  document.getElementById('review-status').textContent =
+    `${approved} flag${approved !== 1 ? 's' : ''} approved`;
+}
+
+function selectAll(approve) {
+  flagsData.forEach((_, i) => setDecision(i, approve ? 'approve' : 'dismiss'));
+}
+
+async function submitReview() {
+  const approved = flagsData
+    .map((f, i) => {
+      if (flagDecisions[i] !== 'approve') return null;
+      const note = document.getElementById(`note-${i}`)?.value?.trim();
+      return {...f, approved: true, reviewer_note: note || null};
+    })
+    .filter(Boolean);
+
+  const btn = document.getElementById('generate-btn');
+  btn.innerHTML = '<span class="spinner"></span><span>Generating…</span>';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch(`/api/review/${sessionId}/submit`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({approved_flags: approved})
+    });
+    if (!res.ok) { const e = await res.json(); throw new Error(e.detail || 'Error'); }
+    const data = await res.json();
+    rawMarkdown = data.final_brief;
+    renderReport(rawMarkdown);
+    setStep(3);
+  } catch (e) {
+    alert(e.message);
+  } finally {
+    btn.innerHTML = '<span>Generate Risk Report</span>';
+    btn.disabled = false;
+  }
+}
+
+function renderReport(md) {
+  const riskMatch = md.match(/risk[^\n]*?(HIGH|MEDIUM|LOW)/i);
+  const riskLevel = riskMatch ? riskMatch[1].toUpperCase() : 'MEDIUM';
+  const icons = {HIGH: '⚠', MEDIUM: '⚡', LOW: '✓'};
+  const labels = {HIGH: 'High Risk — Requires Immediate Attention', MEDIUM: 'Medium Risk — Review Before Signing', LOW: 'Low Risk — Minor Issues Found'};
+  document.getElementById('risk-banner').innerHTML =
+    `<div class="risk-banner risk-${riskLevel}">${icons[riskLevel]} ${labels[riskLevel]}</div>`;
+  document.getElementById('report-body').innerHTML = markdownToHtml(md);
+}
+
+function markdownToHtml(md) {
+  return md
+    .replace(/^#### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/`(.+?)`/g, '<code>$1</code>')
+    .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
+    .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
+    .replace(/^[-*] (.+)$/gm, '<li>$1</li>')
+    .replace(/(<li>.*<\/li>\n?)+/g, m => `<ul>${m}</ul>`)
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/^(?!<)(.+)$/gm, '<p>$1</p>')
+    .replace(/<p><\/p>/g, '');
+}
+
+function copyReport() {
+  navigator.clipboard.writeText(rawMarkdown).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy Markdown', 2000);
+  });
+}
+
+function newReview() {
+  sessionId = null; flagsData = []; flagDecisions = {}; rawMarkdown = '';
+  document.getElementById('contract-text').value = '';
+  document.querySelectorAll('.step').forEach(el => el.classList.remove('done'));
+  setStep(1);
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+</script>

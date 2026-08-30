@@ -1,0 +1,33 @@
+MUTUAL NON-DISCLOSURE AGREEMENT
+
+This Mutual Non-Disclosure Agreement ("Agreement") is entered into as of the Effective Date between the parties.
+
+1. DEFINITION OF CONFIDENTIAL INFORMATION
+"Confidential Information" means any non-public information disclosed by either party that is designated as confidential or that reasonably should be understood to be confidential. This excludes information that is publicly known, independently developed, or required to be disclosed by law.
+
+2. CONFIDENTIALITY OBLIGATIONS
+Each party shall hold Confidential Information in strict confidence using no less than reasonable care, shall not disclose it to third parties without prior written consent, and shall use it solely for evaluating a potential business relationship.
+
+3. TERM
+This Agreement commences on the Effective Date and continues for two (2) years. Confidentiality obligations survive for three (3) years after termination.
+
+4. RETURN OF INFORMATION
+Upon request or termination, each party shall return or destroy all Confidential Information and confirm in writing within ten (10) business days.
+
+5. LIMITATION OF LIABILITY
+NEITHER PARTY SHALL BE LIABLE FOR INDIRECT OR CONSEQUENTIAL DAMAGES. TOTAL LIABILITY SHALL NOT EXCEED $50,000.
+
+6. GOVERNING LAW
+This Agreement is governed by the laws of the State of Delaware. Disputes shall be resolved by arbitration in Delaware under AAA rules.
+
+
+[AMENDED CLAUSE — TERM_AND_EXPIRATION]
+This Agreement shall remain in full force and effect in perpetuity and shall not expire or terminate for any reason unless mutually agreed in writing by both parties.
+
+
+[AMENDED CLAUSE — GOVERNING_LAW]
+This Agreement shall be governed by the laws of the Cayman Islands. Any disputes must be resolved exclusively in the courts of the Cayman Islands, and each party irrevocably submits to such jurisdiction.
+
+
+[AMENDED CLAUSE — LIMITATION_OF_LIABILITY]
+Each party agrees that any breach of this Agreement may result in irreparable harm and that the non-breaching party shall be entitled to any and all damages, including unlimited compensatory and punitive damages, without any cap or limitation.

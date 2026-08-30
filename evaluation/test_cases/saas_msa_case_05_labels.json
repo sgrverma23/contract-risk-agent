@@ -1,0 +1,12 @@
+{
+  "contract_type": "saas_msa",
+  "seeded_flags": [
+    "no_termination_convenience",
+    "uncapped_liability",
+    "unilateral_amendment",
+    "auto_renewal_no_notice"
+  ],
+  "expected_missing": [
+    "data_processing"
+  ]
+}

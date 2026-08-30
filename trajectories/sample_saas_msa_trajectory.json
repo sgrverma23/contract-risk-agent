@@ -1,0 +1,40 @@
+{
+    "trajectory": [
+        {
+            "agent": "ClauseExtractorAgent",
+            "input_summary": "Contract (saas_msa), 2320 chars",
+            "output_summary": "Extracted 14 clauses: ['other', 'sla', 'data_processing', 'ip_assignment', 'liability', 'indemnification', 'termination', 'amendment', 'dispute_resolution', 'termination', 'liability', 'amendment', 'auto_renewal', 'auto_renewal']",
+            "tokens_used": 3346
+        },
+        {
+            "agent": "RiskScorerAgent",
+            "input_summary": "14 clauses reviewed",
+            "output_summary": "Flagged 3: 2 reject, 1 caution",
+            "tokens_used": 2109
+        },
+        {
+            "agent": "TemplateComparatorAgent",
+            "input_summary": "14 clauses vs saas_msa template",
+            "output_summary": "Found 14 template deviations",
+            "tokens_used": 3884
+        },
+        {
+            "agent": "MissingClauseAgent",
+            "input_summary": "10 required, 10 present",
+            "output_summary": "Missing: ['limitation_of_liability', 'termination_for_convenience', 'ip_ownership', 'confidentiality', 'governing_law', 'auto_renewal_notice']",
+            "tokens_used": 916
+        },
+        {
+            "agent": "HumanReviewCheckpoint",
+            "input_summary": "Presented 3 flags to reviewer",
+            "output_summary": "Reviewer approved 3 flags, dismissed 0",
+            "tokens_used": null
+        },
+        {
+            "agent": "SynthesizerAgent",
+            "input_summary": "3 approved flags, 6 missing, 14 template issues",
+            "output_summary": "Generated 3583 char brief, risk=HIGH",
+            "tokens_used": 1604
+        }
+    ]
+}

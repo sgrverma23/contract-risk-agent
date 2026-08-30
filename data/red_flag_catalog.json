@@ -1,0 +1,72 @@
+{
+  "nda": [
+    {
+      "id": "uncapped_damages",
+      "clause_type": "limitation_of_liability",
+      "description": "No liability cap — unlimited damages exposure",
+      "inject_text": "Each party agrees that any breach of this Agreement may result in irreparable harm and that the non-breaching party shall be entitled to any and all damages, including unlimited compensatory and punitive damages, without any cap or limitation."
+    },
+    {
+      "id": "perpetual_term",
+      "clause_type": "term_and_expiration",
+      "description": "Agreement never expires — perpetual confidentiality obligation",
+      "inject_text": "This Agreement shall remain in full force and effect in perpetuity and shall not expire or terminate for any reason unless mutually agreed in writing by both parties."
+    },
+    {
+      "id": "one_sided_obligations",
+      "clause_type": "confidentiality_obligations",
+      "description": "Only one party has confidentiality obligations",
+      "inject_text": "Recipient agrees to hold all Confidential Information of Discloser in strict confidence. Discloser shall have no reciprocal obligations and may freely disclose Recipient's information."
+    },
+    {
+      "id": "overly_broad_definition",
+      "clause_type": "definition_of_confidential_information",
+      "description": "No carve-outs — public info treated as confidential",
+      "inject_text": "'Confidential Information' means any and all information disclosed by Discloser, regardless of whether it is publicly available, previously known, or independently developed."
+    },
+    {
+      "id": "unfavorable_jurisdiction",
+      "clause_type": "governing_law",
+      "description": "Jurisdiction requires in-person appearance in remote location",
+      "inject_text": "This Agreement shall be governed by the laws of the Cayman Islands. Any disputes must be resolved exclusively in the courts of the Cayman Islands, and each party irrevocably submits to such jurisdiction."
+    }
+  ],
+  "saas_msa": [
+    {
+      "id": "uncapped_liability",
+      "clause_type": "liability",
+      "description": "No limitation of liability — unlimited exposure",
+      "inject_text": "Vendor's liability under this Agreement shall be unlimited. Customer may seek any and all damages including direct, indirect, consequential, and punitive damages without limitation."
+    },
+    {
+      "id": "auto_renewal_no_notice",
+      "clause_type": "auto_renewal",
+      "description": "Auto-renews with only 5 days notice window",
+      "inject_text": "This Agreement automatically renews for successive one-year terms. Customer must provide written notice of non-renewal no later than five (5) days prior to the end of the then-current term, or renewal occurs automatically."
+    },
+    {
+      "id": "unilateral_amendment",
+      "clause_type": "amendment",
+      "description": "Vendor can change terms unilaterally with email notice",
+      "inject_text": "Vendor reserves the right to modify any terms of this Agreement at any time by providing email notice to Customer's account email address. Continued use of the Services after such notice constitutes acceptance."
+    },
+    {
+      "id": "broad_ip_assignment",
+      "clause_type": "ip_assignment",
+      "description": "Customer data and derivatives assigned to Vendor",
+      "inject_text": "Customer hereby assigns to Vendor all right, title, and interest in any data, insights, analyses, or derivative works generated through Customer's use of the Services, including all Customer Data processed by Vendor."
+    },
+    {
+      "id": "missing_dpa",
+      "clause_type": "data_processing",
+      "description": "No data processing terms despite handling personal data",
+      "inject_text": null
+    },
+    {
+      "id": "no_termination_convenience",
+      "clause_type": "termination",
+      "description": "Cannot terminate without material breach — locked in for full term",
+      "inject_text": "Neither party may terminate this Agreement prior to the end of the Subscription Term except in the event of an uncured material breach. Customer remains liable for all fees through the end of the Subscription Term."
+    }
+  ]
+}

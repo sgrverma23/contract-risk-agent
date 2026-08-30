@@ -1,0 +1,22 @@
+MUTUAL NON-DISCLOSURE AGREEMENT — STANDARD TEMPLATE
+
+1. DEFINITION OF CONFIDENTIAL INFORMATION
+"Confidential Information" means any non-public information disclosed by either party that is designated as confidential or that reasonably should be understood to be confidential given the nature of the information and circumstances of disclosure. Confidential Information does not include information that: (a) is or becomes publicly known through no breach of this Agreement; (b) was rightfully known before receipt from the disclosing party; (c) is independently developed without use of Confidential Information; or (d) is required to be disclosed by law or court order, provided the receiving party gives prompt written notice.
+
+2. MUTUAL CONFIDENTIALITY OBLIGATIONS
+Each party agrees to: (a) hold the other party's Confidential Information in strict confidence using at least the same degree of care it uses for its own confidential information, but no less than reasonable care; (b) not disclose Confidential Information to any third party without prior written consent; (c) use Confidential Information solely for evaluating or pursuing a potential business relationship between the parties; (d) limit access to employees and advisors who need to know and are bound by confidentiality obligations no less restrictive than this Agreement.
+
+3. TERM AND EXPIRATION
+This Agreement commences on the Effective Date and continues for two (2) years unless earlier terminated by either party upon thirty (30) days written notice. Confidentiality obligations survive termination for a period of three (3) years with respect to information disclosed prior to termination.
+
+4. RETURN OR DESTRUCTION OF INFORMATION
+Upon request or termination, each receiving party shall promptly return or certifiably destroy all Confidential Information and copies thereof, and confirm such destruction in writing within ten (10) business days.
+
+5. LIMITATION OF LIABILITY
+NEITHER PARTY SHALL BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING OUT OF OR RELATED TO THIS AGREEMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. EACH PARTY'S TOTAL LIABILITY SHALL NOT EXCEED $50,000 OR THE AMOUNTS PAID IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM.
+
+6. GOVERNING LAW AND DISPUTE RESOLUTION
+This Agreement shall be governed by the laws of the State of Delaware, without regard to conflict of law principles. Any disputes shall be resolved by binding arbitration under the AAA Commercial Arbitration Rules in the State of Delaware.
+
+7. GENERAL
+This Agreement constitutes the entire agreement between the parties regarding confidentiality and supersedes all prior agreements. It may not be amended except in writing signed by both parties.

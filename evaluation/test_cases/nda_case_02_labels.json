@@ -1,0 +1,8 @@
+{
+  "contract_type": "nda",
+  "seeded_flags": [
+    "uncapped_damages",
+    "one_sided_obligations"
+  ],
+  "expected_missing": []
+}

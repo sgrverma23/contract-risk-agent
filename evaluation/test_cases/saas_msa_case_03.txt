@@ -1,0 +1,40 @@
+SAAS MASTER SERVICES AGREEMENT
+
+1. LICENSE
+Vendor grants Customer a limited, non-exclusive license to access the Services for internal business purposes during the Subscription Term.
+
+2. SERVICE LEVEL AGREEMENT
+Vendor guarantees 99.5% monthly uptime. Downtime exceeding this threshold entitles Customer to service credits of 10% of monthly fees per additional 1%, capped at 30%.
+
+3. DATA PROCESSING
+Vendor processes Customer Data only per Customer's instructions, implements appropriate security measures, notifies of breaches within 72 hours, and deletes all data within 30 days of termination.
+
+4. INTELLECTUAL PROPERTY
+Customer owns all Customer Data. Vendor retains all rights to the Services and improvements.
+
+5. LIMITATION OF LIABILITY
+EACH PARTY'S LIABILITY IS CAPPED AT FEES PAID IN THE PRIOR TWELVE MONTHS. NEITHER PARTY IS LIABLE FOR INDIRECT OR CONSEQUENTIAL DAMAGES.
+
+6. INDEMNIFICATION
+Each party indemnifies the other against third-party claims arising from breach, gross negligence, or willful misconduct.
+
+7. TERM AND TERMINATION
+Initial term: twelve (12) months, auto-renewing with sixty (60) days notice. Either party may terminate for convenience on thirty (30) days notice.
+
+8. AMENDMENTS
+Amendments require written agreement signed by both parties.
+
+9. GOVERNING LAW
+Governed by Delaware law. Disputes resolved by arbitration in Delaware.
+
+
+[AMENDED CLAUSE — TERMINATION]
+Neither party may terminate this Agreement prior to the end of the Subscription Term except in the event of an uncured material breach. Customer remains liable for all fees through the end of the Subscription Term.
+
+
+[AMENDED CLAUSE — AMENDMENT]
+Vendor reserves the right to modify any terms of this Agreement at any time by providing email notice to Customer's account email address. Continued use of the Services after such notice constitutes acceptance.
+
+
+[AMENDED CLAUSE — AUTO_RENEWAL]
+This Agreement automatically renews for successive one-year terms. Customer must provide written notice of non-renewal no later than five (5) days prior to the end of the then-current term, or renewal occurs automatically.

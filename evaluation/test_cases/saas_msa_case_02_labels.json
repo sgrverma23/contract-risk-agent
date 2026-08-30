@@ -1,0 +1,8 @@
+{
+  "contract_type": "saas_msa",
+  "seeded_flags": [
+    "uncapped_liability",
+    "no_termination_convenience"
+  ],
+  "expected_missing": []
+}
